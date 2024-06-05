@@ -7,13 +7,28 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
     var body: some View {
         NavigationStack {
             NavigationLink("Tap Me") {
-                Text("Detail View")
+                DetailView(number: 556)
             }
         }
+    }
+}
+
+struct DetailView: View {
+    var number: Int
+
+    var body: some View {
+        Text("Detail View \(number)")
+    }
+
+    init(number: Int) {
+        self.number = number
+        print("Creating detail view \(number)")
     }
 }
 
