@@ -10,16 +10,19 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @State private var path = [Int]()
+
     var body: some View {
-        NavigationStack {
-            List(0..<100) { i in
-                NavigationLink("Select \(i)", value: i)
-            }
-            .navigationDestination(for: Int.self) { selection in
-                Text("You selected \(selection)")
+            NavigationStack(path: $path) {
+                VStack {
+                    // more code to come
+                }
+                .navigationDestination(for: Int.self) { selection in
+                    Text("You selected \(selection)")
+                }
             }
         }
-    }
 }
 
 
