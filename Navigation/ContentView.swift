@@ -22,6 +22,14 @@ struct ContentView: View {
     }
 }
 
+
+struct Student {
+    var id = UUID()
+    var name: String
+    var age: Int
+}
+
+
 struct DetailView: View {
     var number: Int
 
