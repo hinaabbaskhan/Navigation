@@ -10,11 +10,11 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
+    @State private var path = NavigationPath()
     @State private var path = [Int]()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 ForEach(0..<5) { i in
                     NavigationLink("Select Number: \(i)", value: i)
