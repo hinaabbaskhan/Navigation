@@ -14,24 +14,24 @@ struct ContentView: View {
     @State private var path = [Int]()
 
     var body: some View {
-            NavigationStack(path: $path) {
-                VStack {
-                    Button("Show 32") {
-                        path = [32]
-                    }
-                    
-                    Button("Show 64") {
-                        path.append(64)
-                    }
-                    
-                    Button("Show 32 then 64") {
-                        path = [32, 64]
-                    }
+        NavigationStack {
+            List {
+                ForEach(0..<5) { i in
+                    NavigationLink("Select Number: \(i)", value: i)
                 }
-                .navigationDestination(for: Int.self) { selection in
-                    Text("You selected \(selection)")
+
+                ForEach(0..<5) { i in
+                    NavigationLink("Select String: \(i)", value: String(i))
                 }
             }
+            .navigationDestination(for: Int.self) { selection in
+                Text("You selected the number \(selection)")
+            }
+            .navigationDestination(for: String.self) { selection in
+                Text("You selected the string \(selection)")
+            }
+        }
+
         }
 }
 
