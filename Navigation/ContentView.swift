@@ -31,6 +31,15 @@ struct ContentView: View {
                 Text("You selected the string \(selection)")
             }
         }
+        .toolbar {
+            Button("Push 556") {
+                path.append(556)
+            }
+
+            Button("Push Hello") {
+                path.append("Hello")
+            }
+        }
 
         }
 }
