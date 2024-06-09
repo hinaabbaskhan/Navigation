@@ -56,12 +56,8 @@ struct DetailView: View {
     var number: Int
 
     var body: some View {
-        Text("Detail View \(number)")
-    }
-
-    init(number: Int) {
-        self.number = number
-        print("Creating detail view \(number)")
+        NavigationLink("Go to Random Number", value: Int.random(in: 1...1000))
+            .navigationTitle("Number: \(number)")
     }
 }
 
