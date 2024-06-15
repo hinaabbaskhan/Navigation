@@ -33,14 +33,18 @@ class PathStore {
     }
 
     func save() {
+        
+        guard let representation = path.codable else { return }
+
         do {
-            let data = try JSONEncoder().encode(path)
+            let data = try JSONEncoder().encode(representation)
             try data.write(to: savePath)
         } catch {
             print("Failed to save navigation data")
         }
     }
 }
+
 
 
 
@@ -76,6 +80,7 @@ struct ContentView: View {
             }
         }
 
+//            NavigationStack(path: $path) {
         }
 }
 
