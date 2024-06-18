@@ -53,17 +53,39 @@ struct ContentView: View {
     @State private var pathStore = PathStore()
 
     var body: some View {
-        NavigationStack(path: $pathStore.path) {
-            DetailView(number: 0)
-                .navigationDestination(for: Int.self) { i in
-                    DetailView(number: i)
-                }
+        
+        NavigationStack {
+            List(0..<100) { i in
+                Text("Row \(i)")
+            }
+            .navigationTitle("Title goes here")
+            .toolbarBackground(.blue)
+            .toolbarColorScheme(.dark)
         }
     }
 }
 
 
 //            NavigationStack(path: $path) {
+//                VStack {
+//                    Button("Show 32") {
+//                        path = [32]
+//                    }
+//                    
+//                    Button("Show 64") {
+//                        path.append(64)
+//                    }
+//                    
+//                    Button("Show 32 then 64") {
+//                        path = [32, 64]
+//                    }
+//                }
+//                .navigationDestination(for: Int.self) { selection in
+//                    Text("You selected \(selection)")
+//                }
+//            }
+//        }
+//}
 
 
 struct Student: Hashable {
