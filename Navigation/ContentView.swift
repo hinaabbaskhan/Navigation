@@ -48,41 +48,22 @@ class PathStore {
 
 
 
+
 struct ContentView: View {
-    @State private var path = NavigationPath()
-    @State private var path = [Int]()
+    @State private var pathStore = PathStore()
 
     var body: some View {
-        NavigationStack(path: $path) {
-            List {
-                ForEach(0..<5) { i in
-                    NavigationLink("Select Number: \(i)", value: i)
+        NavigationStack(path: $pathStore.path) {
+            DetailView(number: 0)
+                .navigationDestination(for: Int.self) { i in
+                    DetailView(number: i)
                 }
-
-                ForEach(0..<5) { i in
-                    NavigationLink("Select String: \(i)", value: String(i))
-                }
-            }
-            .navigationDestination(for: Int.self) { selection in
-                Text("You selected the number \(selection)")
-            }
-            .navigationDestination(for: String.self) { selection in
-                Text("You selected the string \(selection)")
-            }
         }
-        .toolbar {
-            Button("Push 556") {
-                path.append(556)
-            }
+    }
+}
 
-            Button("Push Hello") {
-                path.append("Hello")
-            }
-        }
 
 //            NavigationStack(path: $path) {
-        }
-}
 
 
 struct Student: Hashable {
