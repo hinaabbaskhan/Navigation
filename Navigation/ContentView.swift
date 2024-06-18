@@ -55,12 +55,25 @@ struct ContentView: View {
     var body: some View {
         
         NavigationStack {
-            List(0..<100) { i in
-                Text("Row \(i)")
+            Text("Hello, world!")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Tap Me") {
+                        // button action here
+                    }
+                }
             }
-            .navigationTitle("Title goes here")
-            .toolbarBackground(.blue)
-            .toolbarColorScheme(.dark)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button("Tap Me") {
+                    // button action here
+                }
+
+                Button("Tap Me 2") {
+                    // button action here
+                }
+            }
         }
     }
 }
