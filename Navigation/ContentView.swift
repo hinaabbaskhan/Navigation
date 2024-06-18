@@ -51,11 +51,14 @@ class PathStore {
 
 struct ContentView: View {
     @State private var pathStore = PathStore()
+    @State private var title = "SwiftUI"
 
     var body: some View {
         
         NavigationStack {
             Text("Hello, world!")
+                .navigationTitle($title)
+                .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Tap Me") {
